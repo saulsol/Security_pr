@@ -17,7 +17,7 @@ import java.util.List;
 public class GlobalExceptionHandler {
 
 
-    @ExceptionHandler(MethodArgumentNotValidException.class)
+    @ExceptionHandler(s)
     public List<String> handleValidationException(MethodArgumentNotValidException ex){
         List<String> errors = new ArrayList<>();
         ex.getBindingResult().getAllErrors().forEach(

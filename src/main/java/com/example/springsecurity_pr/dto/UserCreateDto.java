@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -23,13 +24,12 @@ public class UserCreateDto {
     @NotNull(message = "역할은 필수 입력값입니다.")
     private String role;
 
-    @NotNull(message = "토큰값은 필수입니다.")
-    private String token;
-    public UserEntity toEntity(){
+
+    public UserEntity toEntity(PasswordEncoder passwordEncoder){
 
         return UserEntity.builder()
                 .username(username)
-                .password(password)
+                .password(passwordEncoder.encode(password))
                 .role(role)
                 .build();
 
