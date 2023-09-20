@@ -14,10 +14,7 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class UserService {
 
-    private UserRepository userRepository;
-
-
-
+    private final UserRepository userRepository;
 
     public void create(UserCreateDto userCreateDto){
         final String userName = userCreateDto.getUsername();
@@ -25,9 +22,10 @@ public class UserService {
             log.warn("이미 존재하는 ID");
             throw new AlreadyExistIdException(ErrorCode.ALREADY_EXISTS);
         }
-
         userRepository.save(userCreateDto.toEntity());
-
     }
+
+
+
 
 }
