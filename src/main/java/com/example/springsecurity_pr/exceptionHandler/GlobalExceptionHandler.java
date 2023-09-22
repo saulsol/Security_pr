@@ -6,11 +6,9 @@ import com.example.springsecurity_pr.util.ErrorCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
-import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
@@ -22,13 +20,12 @@ import java.util.List;
 @Slf4j
 public class GlobalExceptionHandler {
 
-
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidationException(MethodArgumentNotValidException ex){
         BindingResult bindingResult = ex.getBindingResult();
         List<ErrorDto> errorDtoList = new ArrayList<>();
         for(FieldError fieldError : bindingResult.getFieldErrors()){
-            ErrorDto errorDto = new ErrorDto(HttpStatus.BAD_REQUEST, "VALIDATION_CHECK",fieldError.getDefaultMessage());
+            ErrorDto errorDto = new ErrorDto(HttpStatus.BAD_REQUEST, "VALIDATION_CHECK", fieldError.getDefaultMessage());
             errorDtoList.add(errorDto);
         }
 
