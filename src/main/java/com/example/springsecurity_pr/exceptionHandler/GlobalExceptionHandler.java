@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
         BindingResult bindingResult = ex.getBindingResult();
         List<ErrorDto> errorDtoList = new ArrayList<>();
         for(FieldError fieldError : bindingResult.getFieldErrors()){
-            ErrorDto errorDto = new ErrorDto(HttpStatus.BAD_REQUEST, "VALIDATION_CHECK", fieldError.getDefaultMessage());
+            ErrorDto errorDto = new ErrorDto(HttpStatus.BAD_REQUEST, "VALIDATION_CHECK : " + fieldError.getField(), fieldError.getDefaultMessage());
             errorDtoList.add(errorDto);
         }
 

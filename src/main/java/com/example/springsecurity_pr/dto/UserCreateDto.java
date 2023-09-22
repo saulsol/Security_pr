@@ -9,6 +9,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 
 @Data
 @NoArgsConstructor
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 public class UserCreateDto {
 
     @NotEmpty(message = "ID는 필수 입력값입니다.")
+    @Pattern(regexp = "^[A-Z0-9]{8,10}$", message = "아이디는 대문자나 숫자 8-10자입니다.")
     private String username;
     @NotEmpty(message = "PASSWORD는 필수 입력값입니다.")
     private String password;
