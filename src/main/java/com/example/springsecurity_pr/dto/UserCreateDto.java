@@ -20,8 +20,7 @@ public class UserCreateDto {
     private String username;
     @NotEmpty(message = "PASSWORD는 필수 입력값입니다.")
     private String password;
-
-    @NotNull(message = "역할은 필수 입력값입니다.")
+    @NotEmpty(message = "역할은 필수 입력값입니다.")
     private String role;
 
 
