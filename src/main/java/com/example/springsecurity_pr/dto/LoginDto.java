@@ -13,9 +13,9 @@ import javax.validation.constraints.NotEmpty;
 @Builder
 public class LoginDto {
 
-    @NotEmpty(message = "ID는 필수 입력값입니다.")
+    @NotEmpty(message = "로그인 시 ID는 필수 입력값입니다.")
     private String username;
-    @NotEmpty(message = "PASSWORD는 필수 입력값입니다.")
+    @NotEmpty(message = "로그인 시 PASSWORD는 필수 입력값입니다.")
     private String password;
 
 }
